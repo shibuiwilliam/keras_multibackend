@@ -1,0 +1,22 @@
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: pred
+spec:
+  template:
+    spec:
+      restartPolicy: Never
+      volumes:
+        - name: nfstest
+          nfs:
+            server: 10.249.20.65
+            path: "/tmp/nfstest/"
+      containers:
+        - name: pred
+          image: jupyter:1.52
+          volumeMounts:
+              - name: nfstest
+                mountPath: "/tmp/nfstest/"
+          command: ["python"]
+          args: ["/tmp/nfstest/cifar_pred.py"]
+

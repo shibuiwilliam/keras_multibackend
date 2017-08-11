@@ -1,0 +1,25 @@
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: kerascntk
+spec:
+  template:
+    spec:
+      restartPolicy: Never
+      volumes:
+        - name: nfstest
+          nfs:
+            server: 10.249.20.65
+            path: "/tmp/nfstest/"
+      containers:
+        - name: kerascntk
+          image: jupyter:1.52
+          volumeMounts:
+              - name: nfstest
+                mountPath: "/tmp/nfstest/"
+          env:
+              - name: KERAS_BACKEND
+                value: "cntk"
+          command: ["python"]
+          args: ["/tmp/nfstest/cifar_train.py"]
+
