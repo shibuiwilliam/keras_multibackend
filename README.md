@@ -36,12 +36,7 @@ On image no.1, CNTK is predicting 4 with 49.498%, while Tensorflow and Theano 3 
 Getting weighted average according to the training accuracy with each inference, calculated as below, the ensemble inference is 3 with 57.855%.
 It is interesting that in some cases, even though all three inferences are wrong, while ensemble inference becomes right after weighted average .
 
-```math
-
-\frac{0.49498 * 0.771 + 0.55225 * 0.772 + 0.67820 * 0.785}{0.771 + 0.772 + 0.785} \\
-= 0.57855
-
-```
+![math](./0.PNG)
 
 |data |backends| 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 |
 |-----------|------------|------------|------------|------------|------------|------------|------------|------------|------------|------------|------------|
